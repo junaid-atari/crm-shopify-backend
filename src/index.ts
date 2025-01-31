@@ -1,16 +1,20 @@
 /**
- * @author Junaid Atari <mj.atari@gmail.com>
- * @see https://github.com/jiifw/node-ts-boilerplate
- * @link https://github.com/blacksmoke26 Author Website
- * @since 2022-07-23
+ * Main controller
+ * @Author: Junaid Atari junaid.attari@invozone.dev
+ * @Date: 2025-01-31 14:15:14
  */
 
 import 'dotenv/config';
 
-// App
-import { fromApp } from '~/app';
+// core
+import { app } from '~/app/bootstrapper';
+import { listenOptions as appListenOptions } from '~/app/app.options';
 
-// Bootstrapper
-(async (): Promise<void> => {
-  console.log(await fromApp());
-})();
+/// Application listener interface
+app.listen(appListenOptions, (err, address) => {
+  if (err) {
+    console.error(err);
+    process.exit(1);
+  }
+  console.log(`Server listening at ${address}`);
+});
