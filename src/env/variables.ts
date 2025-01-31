@@ -2,6 +2,7 @@
  * Environment variables utilities
  * @Author: Junaid Atari junaid.attari@invozone.dev
  * @Date: 2025-01-31 14:15:14
+ * @see https://github.com/jiifw/jii/tree/master/framework/core/src/env
  */
 
 import obp, {Path} from 'object-path';
@@ -32,7 +33,7 @@ const replaceDynamicVars = (value: string): string | null => {
 
 /**
  * Retrieve a value from the process.env<br>
- * **Note**: Value containing template literals `${..}` or aliases `@..`
+ * **Note**: Value containing template literals `${..}`
  * will get replaced by their *respected values*.
  * @param name - Variable name
  * @param [defaultValue] - Default value if not present
@@ -58,7 +59,7 @@ export function getValue<T>(name: Path, defaultValue: T): T {
 
 /**
  * Retrieve a boolean value from the process.env<br>
- * It will translate `empty`, `null`, `false` or `0` to false otherwise true.
+ * It will translate `empty`, `null`, `undefined`, `false` or `0` to false otherwise true.
  * @param name - Variable name
  * @param [defaultValue] - Default value if not present
  *
@@ -70,7 +71,7 @@ export function getValue<T>(name: Path, defaultValue: T): T {
  */
 export function getBoolValue(name: Path, defaultValue: boolean = false): boolean {
   const value = getValue<string>(name, String(defaultValue)).trim();
-  return !(!value || ['false', '0', 'null', ''].includes(value));
+  return !(!value || ['false', '0', 'null', '', 'undefined'].includes(value));
 }
 
 /**
