@@ -2,9 +2,9 @@
 
 ## Prerequisites
 - Runtime: NodeJs v23.5+
-- Language: TypeScript
+- Language: TypeScript 5.4+
 - Server: [Fastify](https://fastify.dev/)
-- Package Manager: Yarn
+- Package Manager: [Yarn](https://yarnpkg.com/)
 - Process Manager: [PM2](https://pm2.keymetrics.io/docs/usage/application-declaration/)
 
 ## Usage
@@ -16,4 +16,6 @@
 6. Run `yarn build:prod` to create a production build.
 
 ## References
+- [Fastify](https://fastify.dev/)
 - [Node TypeScript Boilerplate](https://github.com/jiifw/node-ts-boilerplate)
+- [Jii Framework - Core](https://github.com/jiifw/jii/tree/master/framework/core/src)
